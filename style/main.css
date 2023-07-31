@@ -46,10 +46,6 @@ body {
   opacity: 0.5;
 }
 
-.header .title .open_app {
-  display: none;
-}
-
 .header .title .open_app button {
   padding: 10px 16px;
   border-radius: 15px;
@@ -168,7 +164,7 @@ body {
     flex-direction: column;
   }
   .download_options .google_play img {
-    max-width: 200px;
+    max-width: 194px;
   }
   .download_options .app_store img {
     max-width: 200px;

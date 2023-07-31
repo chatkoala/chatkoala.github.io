@@ -1,8 +1,10 @@
 const openOnAppBtn = document.querySelector(".open_app button");
+openOnAppBtn.style.display = "none";
 
 openOnAppBtn.addEventListener("click", () => {
   let opSystem = null;
   const userAgent = window.navigator.userAgent;
+  let screen;
 
   switch (true) {
     case /android/.test(userAgent):
@@ -18,7 +20,10 @@ openOnAppBtn.addEventListener("click", () => {
       break;
   }
 
-  if (opSystem === "Android") {
+  if (
+    opSystem === "Android" &&
+    screen === window.matchMedia("screen and (max-width: 991.98px)")
+  ) {
     return (openOnAppBtn.style.display = "block");
   } else {
     return (openOnAppBtn.style.display = "none");
