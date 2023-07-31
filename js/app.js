@@ -6,7 +6,7 @@ const userAgent = window.navigator.userAgent;
 let screen;
 
 const getCurrentOpSystem = () => {
-  switch (true) {
+  switch (userAgent) {
     case /android/.test(userAgent):
       opSystem = "Android";
       break;
@@ -20,6 +20,8 @@ const getCurrentOpSystem = () => {
       break;
   }
 };
+
+console.log(opSystem);
 
 const handleDisplayOpenAppBtn = () => {
   if (
