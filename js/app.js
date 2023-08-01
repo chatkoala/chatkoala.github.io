@@ -17,9 +17,7 @@ const getCurrentOpSystem = () => {
 
 const handleDisplayOpenAppBtn = () => {
   const isAndroid = opSystem === "Android";
-  const isSmallScreen = window
-    .matchMedia("screen and (max-width: 991.98px)")
-    .matches();
+  const isSmallScreen = window.matchMedia("screen and (max-width: 991.98px)").matches();
 
   if (isAndroid && isSmallScreen) {
     openOnAppBtn.style.display = "block";
