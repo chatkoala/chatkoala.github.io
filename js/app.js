@@ -6,34 +6,27 @@ const userAgent = window.navigator.userAgent;
 let screen;
 
 const getCurrentOpSystem = () => {
-  switch (userAgent) {
-    case /android/.test(userAgent):
-      opSystem = "Android";
-      break;
-
-    case /iPad|iPhone|iPod/i.test(userAgent):
-      opSystem = "iOS";
-      break;
-
-    case /window phone/i.test(userAgent):
-      opSystem = "Window Phone";
-      break;
+  if (/android/i.test(userAgent)) {
+    opSystem = "Android";
+  } else if (/iPad|iPhone|iPod/i.test(userAgent)) {
+    opSystem = "iOS";
+  } else if (/windows phone/i.test(userAgent)) {
+    opSystem = "Windows Phone";
   }
 };
 
-console.log(opSystem);
-
 const handleDisplayOpenAppBtn = () => {
-  if (
-    opSystem === "Android" &&
-    screen === window.matchMedia("screen and (max-width: 991.98px)")
-  ) {
-    return (openOnAppBtn.style.display = "block");
+  const isAndroid = opSystem === "Android";
+  const isSmallScreen = window
+    .matchMedia("screen and (max-width: 991.98px)")
+    .matches();
+
+  if (isAndroid && isSmallScreen) {
+    openOnAppBtn.style.display = "block";
   } else {
-    return (openOnAppBtn.style.display = "none");
+    openOnAppBtn.style.display = "none";
   }
 };
 
 getCurrentOpSystem();
-
 handleDisplayOpenAppBtn();
