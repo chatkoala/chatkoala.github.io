@@ -30,8 +30,6 @@ const handleDisplayOpenAppBtn = () => {
   } else {
     openOnAppBtn.style.display = "none";
   }
-
-  console.log(isSmallScreen, opSystem);
 };
 getCurrentOpSystem();
 handleDisplayOpenAppBtn();
