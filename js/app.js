@@ -31,5 +31,8 @@ const handleDisplayOpenAppBtn = () => {
     openOnAppBtn.style.display = "none";
   }
 };
+
 getCurrentOpSystem();
-handleDisplayOpenAppBtn();
+
+window.addEventListener("resize", handleDisplayOpenAppBtn);
+window.addEventListener("DOMContentLoaded", handleDisplayOpenAppBtn);
