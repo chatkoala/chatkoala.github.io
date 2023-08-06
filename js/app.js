@@ -36,3 +36,23 @@ getCurrentOpSystem();
 
 window.addEventListener("resize", handleDisplayOpenAppBtn);
 window.addEventListener("DOMContentLoaded", handleDisplayOpenAppBtn);
+
+// modal
+
+const privacyLink = document.getElementById("privacy-link");
+const privacyModal = document.getElementById("privacy-modal");
+const closeModal = document.getElementById("close-modal");
+
+privacyLink.addEventListener("click", () => {
+  privacyModal.style.display = "flex";
+});
+
+closeModal.addEventListener("click", () => {
+  privacyModal.style.display = "none";
+});
+
+window.addEventListener("click", (event) => {
+  if (event.target === privacyModal) {
+    privacyModal.style.display = "none";
+  }
+});
