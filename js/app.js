@@ -56,3 +56,17 @@ window.addEventListener("click", (event) => {
     privacyModal.style.display = "none";
   }
 });
+
+// language
+
+const langButtons = document.querySelectorAll(".lang_wrapper button");
+
+langButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.value === "en") {
+      window.location.href = "en.html";
+    } else {
+      window.location.href = "index.html";
+    }
+  });
+});

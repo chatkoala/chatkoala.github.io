@@ -15,6 +15,35 @@ body {
   width: 100%;
 }
 
+body {
+  position: relative;
+}
+
+.lang_wrapper {
+  position: absolute;
+  right: 150px;
+  top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lang_wrapper .button {
+  cursor: pointer;
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.lang_wrapper .button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 .container {
   max-width: 1440px;
   width: 100%;
@@ -23,10 +52,13 @@ body {
 
 .header {
   height: 68px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .header .title {
   height: 100%;
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: end;
@@ -131,6 +163,12 @@ body {
 .download_options .app_store img {
   width: 280px;
 }
+.download_options .google_play_en img {
+  width: 250px;
+}
+.download_options .app_store_en img {
+  width: 228px;
+}
 
 .footer {
   padding: 0 100px;
@@ -193,6 +231,7 @@ body {
 .modal-content #close-modal {
   padding: 8px 18px;
   border-radius: 5px;
+  margin-top: 60px;
   border: none;
   background-color: #ed2b2a;
   color: #fff;
@@ -231,6 +270,15 @@ body {
     width: 100%;
   }
 
+  .lang_wrapper {
+    right: 0;
+    flex-direction: column;
+  }
+
+  .lang_wrapper .title {
+    display: none;
+  }
+
   .hero_side .login_img,
   .hero_side .categories_img,
   .hero_side .home_img,
@@ -249,6 +297,9 @@ body {
   }
   .download_options .app_store img {
     max-width: 200px;
+  }
+  .download_options .google_play_en img {
+    width: 230px;
   }
 }
 @media screen and (max-width: 767.98px) {
