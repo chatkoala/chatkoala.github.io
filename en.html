@@ -3,9 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Can Küçükyılmaz" />
+    <meta
+      name="description"
+      content="Celebrate language mastery with our interactive app! Learn via OpenAI-powered chats on chosen or random topics. Boost skills through an engaging experience. Download now!"
+    />
+    <meta name="keywords" content="LanguageLearning, InteractiveApp, ConversationalBot, OpenAI, ReactNative, TurkishSupport, Fluency, Mastery, Practice, Proficiency" />
+    <meta
+      property="og:description"
+      content="Celebrate language mastery with our interactive app! Learn via OpenAI-powered chats on chosen or random topics. Boost skills through an engaging experience. Download now!"
+    />
+    <meta property="og:type" content="mobile.application" />
+    <meta property="og:title" content="Chat Koala" />
+    <meta property="og:url" content="https://www.chatkoala.app/" />
+    <meta property="og:site_name" content="Chat Koala" />
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
     <link rel="stylesheet" href="../style/main.css" />
-    <title>Koala Chat</title>
+    <title>Chat Koala</title>
   </head>
   <body>
     <main>
@@ -110,7 +124,10 @@
     <div class="container">
       <footer class="footer">
         <div>
-          <button id="privacy-link">Privacy Policy and Terms</button>
+          <button id="privacy-link" value="privacy">Privacy Policy</button>
+        </div>
+        <div>
+          <button id="terms-link" value="terms">Terms</button>
         </div>
       </footer>
     </div>
@@ -193,7 +210,104 @@
             devices. For more detailed information, please do not hesitate to contact us at <b>info@chatkoala.app</b> email address.
           </p>
         </div>
-        <button id="close-modal">Close</button>
+        <button class="close-modal">Close</button>
+      </div>
+    </div>
+
+    <div class="modal" id="terms-modal">
+      <div class="modal-content">
+        <h2>Terms</h2>
+
+        <div class="wrapper">
+          <p>Last update: 22/08/2023</p>
+        </div>
+
+        <div class="wrapper">
+          <p>
+            Dear visitor, please carefully read this terms of use agreement before visiting our Chat Koala website. Your access to the site is entirely contingent upon your acceptance of this
+            agreement and your adherence to the terms set forth herein. If you do not agree with any of the conditions stated in this agreement, please terminate your access to the site. By continuing
+            to access the site, you will be presumed to have unconditionally and unrestrictedly accepted the entirety of this agreement text. Please keep this in mind.
+          </p>
+          <p>
+            The Chat Koala website is managed by Chat Koala and will hereinafter be referred to as the APP. These Terms of Use for the site come into effect upon publication. The right to make changes
+            belongs solely to the SITE and any changes shared through the APP will be deemed accepted by all our users from the outset.
+          </p>
+        </div>
+
+        <h2>Privacy</h2>
+
+        <div class="wrapper">
+          <p>
+            Privacy principles governing the processing of your personal data are outlined on a separate page. By using the APP, you acknowledge that the processing of this data is conducted in
+            accordance with the privacy policy.
+          </p>
+        </div>
+
+        <h2>Scope of Service</h2>
+
+        <div class="wrapper">
+          <p>
+            As Chat Koala, we have complete freedom to determine the scope and nature of the services we will provide, within the framework of the law. Any changes we make regarding the services will
+            come into effect upon publication on the APP.
+          </p>
+        </div>
+
+        <h2>Copyrights</h2>
+
+        <div class="wrapper">
+          <p>
+            The owner of all content published on the APP, including but not limited to text, code, graphics, logos, images, audio files, and used software (hereafter referred to as "content"), is
+            Chat Koala, and all rights are reserved. Reproduction or copying of site content is strictly prohibited without written permission.
+          </p>
+        </div>
+
+        <h2 style="margin-bottom: 20px">In General Clause</h2>
+
+        <ol class="ordered_list" type="a">
+          <li>
+            All users undertake that they will use the APP only for lawful and personal purposes, and they will not engage in any activities that would infringe upon the rights of third parties. Users
+            are solely responsible for the legal and criminal consequences of their actions and transactions carried out within the APP. The APP bears no direct or indirect liability for any damages
+            suffered or that may be suffered by third parties due to these actions and transactions.
+          </li>
+          <li>
+            We do our best to ensure the accuracy and currency of the information available on the APP. However, despite our efforts, this information may lag behind actual changes and variations can
+            occur. Therefore, we do not provide any explicit or implicit warranties and make no commitments regarding the accuracy and currency of the information contained within the site.
+          </li>
+          <li>
+            The APP may contain hyperlinks to other websites, applications, and platforms operated by third parties, the contents of which are unknown to us. The APP solely facilitates access to these
+            sites for functionality purposes and we do not accept any responsibility for their contents.
+          </li>
+          <li>
+            While we strive to keep the APP free from viruses, we do not guarantee the absence of viruses completely. Therefore, it is the responsibility of users to take necessary precautions against
+            viruses when downloading data. We do not accept responsibility for damages that may arise from viruses, malicious programs, codes, or materials.
+          </li>
+          <li>
+            We do not provide any guarantees regarding the absence of defects or errors in the services provided on the APP, nor do we guarantee uninterrupted service. We reserve the right to
+            terminate your access to the APP and its services, or any portion thereof, at any time without prior notice.
+          </li>
+        </ol>
+
+        <div class="wrapper">
+          <p>You can contact us via <b>info@chatkoala.app </b> to exercise the rights mentioned above.</p>
+        </div>
+
+        <h2>Limitation of Liability</h2>
+
+        <div class="wrapper">
+          <p>
+            Our liability for damages arising from the use of the APP is limited to intentional misconduct and gross negligence. In cases of breach of contract, the total compensation that can be
+            claimed is limited to foreseeable damages. The aforementioned limitations of liability do not apply to situations involving loss of life, bodily injury, or harm to a person's health. In
+            all cases legally considered as force majeure, we will not be liable for compensation due to delay, non-performance, or default.
+          </p>
+        </div>
+
+        <div class="wrapper">
+          <p>
+            Dispute Resolution: In the resolution of any disputes arising from the implementation or interpretation of this Agreement, Turkish Republic laws shall apply; Ankara Courthouses and
+            Enforcement Offices shall have jurisdiction.
+          </p>
+        </div>
+        <button class="close-modal" value="terms-close">Close</button>
       </div>
     </div>
 

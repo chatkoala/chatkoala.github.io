@@ -40,20 +40,43 @@ window.addEventListener("DOMContentLoaded", handleDisplayOpenAppBtn);
 // modal
 
 const privacyLink = document.getElementById("privacy-link");
+const termsLink = document.getElementById("terms-link");
 const privacyModal = document.getElementById("privacy-modal");
-const closeModal = document.getElementById("close-modal");
+const termsModal = document.getElementById("terms-modal");
+const closeModal = document.querySelectorAll(".close-modal");
 
-privacyLink.addEventListener("click", () => {
-  privacyModal.style.display = "flex";
+const linkBtns = [privacyLink, termsLink];
+const closeIcons = closeModal;
+
+linkBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const { value } = e.target;
+
+    if (value === "privacy") {
+      privacyModal.style.display = "flex";
+    } else {
+      termsModal.style.display = "flex";
+    }
+  });
 });
 
-closeModal.addEventListener("click", () => {
-  privacyModal.style.display = "none";
+closeIcons.forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    const { value } = e.target;
+
+    if (value === "privacy-close") {
+      privacyModal.style.display = "none";
+    } else {
+      termsModal.style.display = "none";
+    }
+  });
 });
 
 window.addEventListener("click", (event) => {
   if (event.target === privacyModal) {
     privacyModal.style.display = "none";
+  } else if (event.target === termsModal) {
+    termsModal.style.display = "none";
   }
 });
 

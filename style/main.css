@@ -175,9 +175,10 @@ body {
   height: 60px;
   display: flex;
   justify-content: center;
+  gap: 15px;
 }
 
-#privacy-link {
+.footer button {
   border: none;
   outline: none;
   cursor: pointer;
@@ -185,7 +186,8 @@ body {
   -webkit-transition: all ease 0.2s;
 }
 
-#privacy-link:hover {
+#privacy-link:hover,
+#terms-link:hover {
   color: red;
 }
 
@@ -228,7 +230,7 @@ body {
   line-height: 30px;
 }
 
-.modal-content #close-modal {
+.modal-content .close-modal {
   padding: 8px 18px;
   border-radius: 5px;
   margin-top: 60px;
@@ -240,7 +242,7 @@ body {
   -webkit-transition: all ease 0.2s;
 }
 
-.modal-content #close-modal:hover {
+.modal-content .close-modal:hover {
   opacity: 0.9;
 }
 
