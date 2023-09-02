@@ -322,3 +322,9 @@ body {
     line-height: 20px;
   }
 }
+
+
+.remove-image {
+  width: 260px;
+  max-width: 90%;
+}
