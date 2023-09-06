@@ -1,4 +1,5 @@
-const openOnAppBtn = document.querySelector(".open_app button");
+const openOnAppBtn = document.querySelector(".open_app");
+const closeBannerBtn = document.querySelector(".close_banner");
 openOnAppBtn.style.display = "none";
 
 let opSystem = null;
@@ -26,7 +27,7 @@ const handleDisplayOpenAppBtn = () => {
   const isSmallScreen = window.matchMedia("screen and (max-width: 991.98px)").matches;
 
   if (isAndroid && isSmallScreen) {
-    openOnAppBtn.style.display = "block";
+    openOnAppBtn.style.display = "flex";
   } else {
     openOnAppBtn.style.display = "none";
   }
@@ -36,6 +37,10 @@ getCurrentOpSystem();
 
 window.addEventListener("resize", handleDisplayOpenAppBtn);
 window.addEventListener("DOMContentLoaded", handleDisplayOpenAppBtn);
+
+closeBannerBtn.addEventListener("click", () => {
+  openOnAppBtn.style.display = "none";
+});
 
 // language
 
