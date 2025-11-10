@@ -1,3 +1,65 @@
+/* Floating CTA button styles and key Tailwind-like utilities */
+.fixed {
+  position: fixed;
+}
+.bottom-6 {
+  bottom: 1.5rem;
+}
+.right-6 {
+  right: 1.5rem;
+}
+.z-50 {
+  z-index: 50;
+}
+.bg-emerald-600 {
+  background-color: #059669;
+}
+.hover\:bg-emerald-700:hover {
+  background-color: #047857;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+.shadow-lg {
+  box-shadow: 0 10px 20px 0 rgba(16, 185, 129, 0.15),
+    0 2px 4px 0 rgba(16, 185, 129, 0.08);
+}
+.transition-all {
+  transition: all 0.3s ease;
+}
+.duration-300 {
+  transition-duration: 300ms;
+}
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.w-5 {
+  width: 1.25rem;
+}
+.h-5 {
+  height: 1.25rem;
+}
 *,
 :before,
 :after {
@@ -1121,4 +1183,49 @@ video {
     font-size: 4.5rem;
     line-height: 1;
   }
+}
+
+/* container crossfade/slide */
+#highlight-paragraph {
+  transition: opacity 360ms ease, transform 360ms ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* wrapper around matched word + chip */
+.highlight-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* chip initial and animated states */
+.syn-chip {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #065f46;
+  background: #ecfdf5;
+  padding: 4px 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+.syn-chip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* paragraph baseline styling (keeps spacing consistent) */
+.fade-paragraph {
+  margin: 0;
 }
