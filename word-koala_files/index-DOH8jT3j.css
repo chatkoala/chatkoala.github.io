@@ -1583,3 +1583,16 @@ video {
 .hover\:bg-gray-400:hover {
   background-color: #9ca3af;
 }
+
+/* Chrome blue button styles */
+.bg-chrome-blue {
+  background-color: #4285f4;
+}
+
+.border-chrome-blue {
+  border: 2px solid #2a5fc7;
+}
+
+.hover\:bg-chrome-blue-dark:hover {
+  background-color: #3367d6;
+}
