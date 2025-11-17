@@ -15,38 +15,6 @@
       const paragraphs = [
         {
           sentence:
-            "The meticulous artist spent hours refining every intricate detail of her painting.",
-          highlights: [
-            {
-              word: "meticulous",
-              synonym: "careful",
-            },
-            {
-              word: "refining",
-              synonym: "improving",
-            },
-            {
-              word: "intricate",
-              synonym: "complex",
-            },
-          ],
-        },
-        {
-          sentence:
-            "The company announced a comprehensive plan to reduce emissions and enhance sustainability.",
-          highlights: [
-            {
-              word: "comprehensive",
-              synonym: "complete",
-            },
-            {
-              word: "emissions",
-              synonym: "pollution",
-            },
-          ],
-        },
-        {
-          sentence:
             "The forest was serene, its tranquil atmosphere broken only by the melodious chirping of birds.",
           highlights: [
             {
@@ -60,6 +28,42 @@
             {
               word: "melodious",
               synonym: "harmonious",
+            },
+          ],
+        },
+        {
+          sentence:
+            "The meticulous artist spent hours refining every intricate detail of her masterpiece.",
+          highlights: [
+            {
+              word: "meticulous",
+              synonym: "careful",
+            },
+            {
+              word: "refining",
+              synonym: "perfecting",
+            },
+            {
+              word: "intricate",
+              synonym: "complex",
+            },
+          ],
+        },
+        {
+          sentence:
+            "The company unveiled an ambitious initiative to mitigate emissions and foster sustainability.",
+          highlights: [
+            {
+              word: "ambitious",
+              synonym: "bold",
+            },
+            {
+              word: "mitigate",
+              synonym: "reduce",
+            },
+            {
+              word: "foster",
+              synonym: "encourage",
             },
           ],
         },
@@ -120,6 +124,8 @@
           return `<p class="text-left text-gray-800 leading-relaxed fade-paragraph">${html}</p>`;
         }
 
+        let synonymsVisible = true; // Track synonym visibility state - starts ON
+
         (function () {
           const container = document.getElementById("highlight-paragraph");
           if (!container || !paragraphs || !paragraphs.length) return;
@@ -139,12 +145,14 @@
               requestAnimationFrame(() => {
                 container.style.opacity = 1;
                 container.style.transform = "translateY(0)";
-                // Stagger chip reveal
+                // Stagger chip reveal only if synonyms are visible
                 const chips = container.querySelectorAll(".syn-chip");
                 chips.forEach((c, i) => {
                   // ensure initial state
                   c.classList.remove("visible");
-                  setTimeout(() => c.classList.add("visible"), 80 + i * 90);
+                  if (synonymsVisible) {
+                    setTimeout(() => c.classList.add("visible"), 80 + i * 90);
+                  }
                 });
               });
               idx = (idx + 1) % paragraphs.length;
@@ -157,6 +165,50 @@
           setTimeout(() => show(), 50);
           setInterval(show, 5000);
         })();
+
+        // Toggle synonyms button functionality
+        const toggleBtn = document.getElementById("toggle-synonyms-btn");
+        const demoInstruction = document.getElementById("demo-instruction");
+        
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", function () {
+            synonymsVisible = !synonymsVisible;
+            const chips = document.querySelectorAll(".syn-chip");
+            const toggleCircle = toggleBtn.querySelector("span");
+            
+            if (synonymsVisible) {
+              // Show synonyms with stagger animation
+              chips.forEach((c, i) => {
+                setTimeout(() => c.classList.add("visible"), i * 90);
+              });
+              
+              // Update toggle switch to "on" state
+              toggleBtn.classList.remove("bg-gray-300", "hover:bg-gray-400", "border-gray-400");
+              toggleBtn.classList.add("bg-emerald-600", "hover:bg-emerald-700", "border-emerald-700");
+              toggleCircle.classList.remove("translate-x-1");
+              toggleCircle.classList.add("translate-x-7");
+              toggleBtn.setAttribute("aria-checked", "true");
+              
+              // Hide instruction after first click
+              if (demoInstruction) {
+                demoInstruction.style.opacity = "0";
+                setTimeout(() => {
+                  demoInstruction.style.display = "none";
+                }, 300);
+              }
+            } else {
+              // Hide synonyms
+              chips.forEach((c) => c.classList.remove("visible"));
+              
+              // Update toggle switch to "off" state
+              toggleBtn.classList.remove("bg-emerald-600", "hover:bg-emerald-700", "border-emerald-700");
+              toggleBtn.classList.add("bg-gray-300", "hover:bg-gray-400", "border-gray-400");
+              toggleCircle.classList.remove("translate-x-7");
+              toggleCircle.classList.add("translate-x-1");
+              toggleBtn.setAttribute("aria-checked", "false");
+            }
+          });
+        }
       });
     </script>
   </head>
@@ -195,20 +247,12 @@
           class="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50"
         >
           <div
-            class="absolute inset-0 bg-[url(&#39;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDE1MCwxMzYsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==&#39;)] opacity-40"
+            class="absolute inset-0 opacity-40"
           ></div>
           <div
-            class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 sm:pt-28 sm:pb-32"
+            class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16 sm:pt-16 sm:pb-20 mt-10 py-8"
           >
             <div class="text-center">
-              <div
-                class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-emerald-200 mb-8 shadow-sm hover:shadow-md transition-shadow duration-300"
-              >
-                <span class="text-2xl">🐨</span
-                ><span class="text-sm font-medium text-emerald-800"
-                  >Free Chrome Extension</span
-                >
-              </div>
               <h1
                 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight"
               >
@@ -261,18 +305,34 @@
                   1-click install · No sign-up · Privacy first
                 </div>
               </div>
-                            <div class="relative mt-16">
+                            <div class="relative mt-12">
                 <h3 class="text-lg font-semibold text-emerald-800 mb-2">
-                  ✨ How it works
+                  ✨ Live demo
                 </h3>
 
                 <div
                   class="absolute inset-0 bg-gradient-to-t from-emerald-50 via-transparent to-transparent"
                 ></div>
                 <div
-                  class="relative bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto border border-gray-200"
+                  class="relative bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto border border-gray-200 overflow-hidden"
                 >
-                  <div class="space-y-4">
+                  <!-- Toggle button in top right -->
+                  <div class="absolute top-4 right-6 sm:top-6 sm:right-8 flex items-center gap-2 sm:gap-3 z-10">
+                    <span id="demo-instruction" class="text-sm sm:text-base font-medium">
+                      👉 Disable it!
+                    </span>
+                    <button
+                      id="toggle-synonyms-btn"
+                      class="relative inline-flex items-center h-8 w-14 rounded-full bg-emerald-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover:bg-emerald-700 border-2 border-emerald-700 flex-shrink-0"
+                      role="switch"
+                      aria-checked="true"
+                      aria-label="Toggle synonyms visibility"
+                    >
+                      <span class="inline-block h-5 w-5 transform rounded-full bg-white shadow-lg transition-transform duration-300 translate-x-7 border border-gray-200"></span>
+                    </button>
+                  </div>
+                  
+                  <div class="space-y-4 mt-8">
                     <div
                       class="flex items-start gap-4 p-4 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border border-emerald-200"
                     >
@@ -1190,255 +1250,6 @@
                 <div class="text-sm text-gray-700 font-medium">
                   Websites Supported
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="py-24 bg-gradient-to-br from-gray-50 to-emerald-50">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-              <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                Perfect For
-              </h2>
-              <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Built for anyone who wants to read better and learn faster
-              </p>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-graduation-cap w-8 h-8 text-white"
-                    >
-                      <path
-                        d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"
-                      ></path>
-                      <path d="M22 10v6"></path>
-                      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    English Learners
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Perfect for A2–C1 level students building vocabulary
-                  </p>
-                </div>
-              </div>
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-users w-8 h-8 text-white"
-                    >
-                      <path
-                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
-                      ></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    ESL Teachers
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Recommend to students for independent learning
-                  </p>
-                </div>
-              </div>
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-book-open w-8 h-8 text-white"
-                    >
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                      <path
-                        d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    Book Lovers
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Enjoy reading without dictionary interruptions
-                  </p>
-                </div>
-              </div>
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-pencil w-8 h-8 text-white"
-                    >
-                      <path
-                        d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
-                      ></path>
-                      <path d="m15 5 4 4"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    Writers &amp; Researchers
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Understand complex texts quickly and efficiently
-                  </p>
-                </div>
-              </div>
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-rose-500 to-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-globe w-8 h-8 text-white"
-                    >
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <path
-                        d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
-                      ></path>
-                      <path d="M2 12h20"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    Non-Native Speakers
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Navigate the web with confidence and clarity
-                  </p>
-                </div>
-              </div>
-              <div
-                class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:border-transparent overflow-hidden"
-              >
-                <div
-                  class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity duration-300 from-emerald-500 to-teal-500"
-                ></div>
-                <div class="relative">
-                  <div
-                    class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-heart w-8 h-8 text-white"
-                    >
-                      <path
-                        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-                      ></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                    Word Enthusiasts
-                  </h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    Expand your vocabulary naturally every day
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="mt-16 text-center">
-              <div
-                class="inline-block p-8 bg-white rounded-2xl shadow-xl border border-gray-200 max-w-2xl"
-              >
-                <p class="text-lg text-gray-700 leading-relaxed">
-                  <span class="font-semibold text-emerald-700"
-                    >Stay in the flow:</span
-                  >
-                  Understand words instantly while reading.
-                  <span class="font-semibold text-emerald-700"
-                    >Learn by context:</span
-                  >
-                  Pick up vocabulary naturally.
-                </p>
               </div>
             </div>
           </div>
