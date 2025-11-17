@@ -483,6 +483,9 @@ video {
 .h-5 {
   height: 1.25rem;
 }
+.h-4 {
+  height: 1rem;
+}
 .h-6 {
   height: 1.5rem;
 }
@@ -491,6 +494,9 @@ video {
 }
 .h-8 {
   height: 2rem;
+}
+.h-12 {
+  height: 3rem;
 }
 .h-full {
   height: 100%;
@@ -513,6 +519,9 @@ video {
 .w-3 {
   width: 0.75rem;
 }
+.w-4 {
+  width: 1rem;
+}
 .w-5 {
   width: 1.25rem;
 }
@@ -524,6 +533,9 @@ video {
 }
 .w-8 {
   width: 2rem;
+}
+.w-12 {
+  width: 3rem;
 }
 .w-full {
   width: 100%;
@@ -1263,6 +1275,20 @@ video {
   margin: 0;
 }
 
+/* Subtle pulse animation for demo instruction */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 /* Toggle button utilities */
 .z-10 {
   z-index: 10;
@@ -1380,8 +1406,24 @@ video {
   margin-top: 2rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-9 {
+  margin-top: 2.25rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .mb-1\.5 {
   margin-bottom: 0.375rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
@@ -1396,12 +1438,24 @@ video {
   margin-bottom: 1.5rem;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .gap-1\.5 {
   gap: 0.375rem;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-3 {
   gap: 0.75rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .pt-10 {
@@ -1433,10 +1487,27 @@ video {
   padding-bottom: 3rem;
 }
 
+.p-3 {
+  padding: 0.75rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
 /* Responsive utilities for toggle */
 @media (min-width: 640px) {
+  .sm\:top-3 {
+    top: 0.75rem;
+  }
+  .sm\:top-4 {
+    top: 1rem;
+  }
   .sm\:top-6 {
     top: 1.5rem;
+  }
+  .sm\:right-4 {
+    right: 1rem;
   }
   .sm\:right-6 {
     right: 1.5rem;
@@ -1454,13 +1525,61 @@ video {
   .sm\:gap-3 {
     gap: 0.75rem;
   }
+  .sm\:p-4 {
+    padding: 1rem;
+  }
+  .sm\:pt-8 {
+    padding-top: 2rem;
+  }
+  .sm\:mt-9 {
+    margin-top: 2.25rem;
+  }
 }
 
 /* Additional utility classes for positioning */
+.top-2 {
+  top: 0.5rem;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
 .right-8 {
   right: 2rem;
 }
 
 .right-10 {
   right: 2.5rem;
+}
+
+/* Transform utilities for toggle switch */
+.translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+.translate-x-6 {
+  transform: translateX(1.5rem);
+}
+
+.translate-x-7 {
+  transform: translateX(1.75rem);
+}
+
+/* Border utilities */
+.border-gray-400 {
+  border-color: #9ca3af;
+}
+
+.border-emerald-700 {
+  border-color: #047857;
+}
+
+/* Background utilities for hover states */
+.hover\:bg-gray-400:hover {
+  background-color: #9ca3af;
 }

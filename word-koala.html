@@ -15,55 +15,51 @@
       const paragraphs = [
         {
           sentence:
-            "The forest was serene, its tranquil atmosphere broken only by the melodious chirping of birds.",
+            "Reading helps you acquire knowledge rapidly.",
           highlights: [
             {
-              word: "serene",
-              synonym: "peaceful",
+              word: "acquire",
+              synonym: "gain",
             },
             {
-              word: "tranquil",
-              synonym: "calm",
-            },
-            {
-              word: "melodious",
-              synonym: "harmonious",
+              word: "rapidly",
+              synonym: "quickly",
             },
           ],
         },
         {
           sentence:
-            "The meticulous artist spent hours refining every intricate detail of her masterpiece.",
+            "She writes with remarkable clarity and precision.",
           highlights: [
             {
-              word: "meticulous",
-              synonym: "careful",
+              word: "remarkable",
+              synonym: "impressive",
             },
             {
-              word: "refining",
-              synonym: "perfecting",
+              word: "clarity",
+              synonym: "clearness",
             },
             {
-              word: "intricate",
-              synonym: "complex",
+              word: "precision",
+              synonym: "accuracy",
             },
           ],
         },
         {
           sentence:
-            "The company unveiled an ambitious initiative to mitigate emissions and foster sustainability.",
+            "The team demonstrated exceptional resilience.",
           highlights: [
             {
-              word: "ambitious",
-              synonym: "bold",
+              word: "demonstrated",
+              synonym: "showed",
             },
             {
-              word: "mitigate",
-              synonym: "reduce",
+              word: "exceptional",
+              synonym: "outstanding",
             },
             {
-              word: "foster",
-              synonym: "encourage",
+              word: "resilience",
+              synonym: "strength",
             },
           ],
         },
@@ -176,6 +172,14 @@
             const chips = document.querySelectorAll(".syn-chip");
             const toggleCircle = toggleBtn.querySelector("span");
             
+            // Hide instruction after ANY click
+            if (demoInstruction) {
+              demoInstruction.style.opacity = "0";
+              setTimeout(() => {
+                demoInstruction.style.display = "none";
+              }, 300);
+            }
+            
             if (synonymsVisible) {
               // Show synonyms with stagger animation
               chips.forEach((c, i) => {
@@ -186,16 +190,8 @@
               toggleBtn.classList.remove("bg-gray-300", "hover:bg-gray-400", "border-gray-400");
               toggleBtn.classList.add("bg-emerald-600", "hover:bg-emerald-700", "border-emerald-700");
               toggleCircle.classList.remove("translate-x-1");
-              toggleCircle.classList.add("translate-x-7");
+              toggleCircle.classList.add("translate-x-6");
               toggleBtn.setAttribute("aria-checked", "true");
-              
-              // Hide instruction after first click
-              if (demoInstruction) {
-                demoInstruction.style.opacity = "0";
-                setTimeout(() => {
-                  demoInstruction.style.display = "none";
-                }, 300);
-              }
             } else {
               // Hide synonyms
               chips.forEach((c) => c.classList.remove("visible"));
@@ -203,7 +199,7 @@
               // Update toggle switch to "off" state
               toggleBtn.classList.remove("bg-emerald-600", "hover:bg-emerald-700", "border-emerald-700");
               toggleBtn.classList.add("bg-gray-300", "hover:bg-gray-400", "border-gray-400");
-              toggleCircle.classList.remove("translate-x-7");
+              toggleCircle.classList.remove("translate-x-6");
               toggleCircle.classList.add("translate-x-1");
               toggleBtn.setAttribute("aria-checked", "false");
             }
@@ -250,23 +246,23 @@
             class="absolute inset-0 opacity-40"
           ></div>
           <div
-            class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-12 pb-0"
+            class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-0"
           >
             <div class="text-center">
               <h1
-                class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight"
+                class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 tracking-tight"
               >
                 Word Koala
               </h1>
               <p
-                class="text-xl sm:text-2xl font-light text-gray-700 mb-3 max-w-4xl mx-auto leading-relaxed"
+                class="text-xl sm:text-2xl font-light text-gray-700 mb-2 max-w-4xl mx-auto leading-relaxed"
               >
                 Understand Every Word You Read
               </p>
               <p
-                class="text-base sm:text-lg text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed"
+                class="text-base sm:text-lg text-gray-600 mb-4 max-w-3xl mx-auto leading-relaxed"
               >
-                A free Chrome extension that makes reading easier. See simple
+                A free <strong>Chrome extension</strong> that makes reading easier. See simple
                 meanings and synonyms on any webpage.<br /><span
                   class="font-medium text-emerald-700"
                   >Learn smoother. Read faster. Build your vocabulary
@@ -275,15 +271,15 @@
               </p>
 
               <div
-                class="flex flex-col gap-1.5 justify-center items-center"
-              >
+                class="flex flex-col gap-1 justify-center items-center"
+              > 
                 <a
                   id="hero"
                   href="https://chromewebstore.google.com/detail/word-koala-instant-synony/ehagbcacfffjmacimilnnfhkfppngeji"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="group inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 text-white text-lg font-semibold rounded-full hover:bg-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-                  ><span>Add to Chrome — It's Free</span
+                  ><span>Start Reading Smarter — Free</span
                   ><svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -302,11 +298,11 @@
                 <div
                   class="text-xs text-emerald-700 text-center font-medium"
                 >
-                  1-click install · No sign-up · Privacy first
+                  30-second setup · No account needed · Privacy first
                 </div>
               </div>
-                            <div class="relative mt-8 mb-8">
-                <div class="text-center mb-1.5">
+                            <div class="relative mt-6 mb-6">
+                <div class="text-center mb-1">
                   <span class="text-xs uppercase tracking-wider text-gray-500 font-medium">Live Example</span>
                 </div>
 
@@ -314,29 +310,29 @@
                   class="absolute inset-0 bg-gradient-to-t from-emerald-50 via-transparent to-transparent pointer-events-none"
                 ></div>
                 <div
-                  class="relative bg-white rounded-xl shadow-lg p-4 sm:p-6 max-w-3xl mx-auto border border-gray-200 overflow-hidden"
-                  style="min-height: 180px;"
+                  class="relative bg-white rounded-xl shadow-lg p-3 sm:p-4 max-w-3xl mx-auto border border-gray-200 overflow-hidden"
+                  style="min-height: 140px;"
                 >
                   <!-- Toggle button in top right -->
-                  <div class="absolute top-3 right-4 sm:top-4 sm:right-6 flex items-center gap-2 sm:gap-3 z-10">
-                    <span id="demo-instruction" class="text-xs sm:text-sm font-medium whitespace-nowrap">
-                      👉 Disable it!
+                  <div class="absolute top-2 right-3 sm:top-3 sm:right-4 flex items-center gap-2 z-10">
+                    <span id="demo-instruction" class="text-xs font-medium whitespace-nowrap animate-pulse-soft">
+                      👉 Try toggling
                     </span>
                     <button
                       id="toggle-synonyms-btn"
-                      class="relative inline-flex items-center h-8 w-14 rounded-full bg-emerald-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover:bg-emerald-700 border-2 border-emerald-700 flex-shrink-0"
+                      class="relative inline-flex items-center h-7 w-12 rounded-full bg-emerald-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover:bg-emerald-700 border-2 border-emerald-700 flex-shrink-0"
                       role="switch"
                       aria-checked="true"
                       aria-label="Toggle synonyms visibility"
                     >
-                      <span class="inline-block h-5 w-5 transform rounded-full bg-white shadow-lg transition-transform duration-300 translate-x-7 border border-gray-200"></span>
+                      <span class="inline-block h-4 w-4 transform rounded-full bg-white shadow-lg transition-transform duration-300 translate-x-6 border border-gray-200"></span>
                     </button>
                   </div>
                   
-                  <div class="space-y-2 sm:space-y-3 mt-10 sm:mt-12">
+                  <div class="space-y-2 mt-8 sm:mt-9">
                     <div
-                      class="flex items-start gap-2 sm:gap-3 p-3 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border border-emerald-200"
-                      style="padding-top: 2.5rem;"
+                      class="flex items-start gap-2 p-2.5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border border-emerald-200"
+                      style="padding-top: 2rem;"
                     >
                       <div
                         class="flex-shrink-0 w-2 h-2 bg-emerald-500 rounded-full mt-1.5"
@@ -349,8 +345,8 @@
                         ></div>
                       </div>
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-500 text-center">
-                      Synonyms and definitions appear instantly as you read
+                    <p class="text-xs text-gray-500 text-center">
+                      Instantly see simpler words as you read
                     </p>
                   </div>
                 </div>
@@ -360,7 +356,7 @@
           </div>
           
         </section>
-        <section class="py-12">
+        <section class="py-8">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
               See It In Action
@@ -382,7 +378,7 @@
             </div>
           </div>
         </section>
-        <section class="py-12 bg-white">
+        <section class="py-8 bg-white">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
               <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -395,10 +391,10 @@
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -430,10 +426,10 @@
                 </p>
               </div>
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -460,10 +456,10 @@
                 </p>
               </div>
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -490,10 +486,10 @@
                 </p>
               </div>
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -521,10 +517,10 @@
                 </p>
               </div>
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -552,10 +548,10 @@
                 </p>
               </div>
               <div
-                class="group p-8 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
+                class="group p-6 rounded-2xl border border-gray-200 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-emerald-50 hover:to-teal-50"
               >
                 <div
-                  class="w-14 h-14 bg-emerald-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
+                  class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-200 transition-all duration-300"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -586,7 +582,7 @@
             </div>
           </div>
         </section>
-        <section class="py-12 bg-gradient-to-br from-gray-50 to-emerald-50">
+        <section class="py-8 bg-gradient-to-br from-gray-50 to-emerald-50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
               <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -690,7 +686,7 @@
           </div>
         </section>
         <section
-          class="py-12 bg-white"
+          class="py-8 bg-white"
           id="how"
         >
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -902,7 +898,7 @@
             </div>
           </div>
         </section>
-        <section class="py-12 bg-white">
+        <section class="py-8 bg-white">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
               <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -1257,7 +1253,7 @@
             </div>
           </div>
         </section>
-        <section class="py-12 bg-white">
+        <section class="py-8 bg-white">
           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
               <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
